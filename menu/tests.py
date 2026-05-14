@@ -1,6 +1,14 @@
 from django.test import TestCase
 from .models import Category, Dish
 
+
+class HealthCheckTestCase(TestCase):
+    def test_health_check_returns_ok_status(self):
+        response = self.client.get("/health/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["status"], "ok")
+
 class MenuTestCase(TestCase):
     def setUp(self):
         self.category = Category.objects.create(name="Десерти", description="Солодощі")
