@@ -16,3 +16,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Копіюємо весь проєкт у контейнер
 COPY . /app/
+
+EXPOSE 8000
