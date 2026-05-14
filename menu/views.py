@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 
 def index(request):
@@ -12,3 +13,7 @@ def about(request):
 
 def book(request):
     return render(request, 'menu/book.html')
+
+def health_check(request):
+    # A small operational endpoint lets Docker and CI verify that Django starts correctly.
+    return JsonResponse({"status": "ok", "service": "restaurant-menu"})
